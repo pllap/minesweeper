@@ -115,6 +115,10 @@ public class Board {
         }
     }
 
+    public void flag(int row, int col) {
+        cells[row][col].flag();
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
