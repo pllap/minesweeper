@@ -78,37 +78,37 @@ public class Board {
     }
 
     private void bfs(int row, int col) {
-        Queue<Integer[]> queue = new LinkedList<>();
-        queue.add(new Integer[]{row, col});
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{row, col});
         while (!queue.isEmpty()) {
-            Integer[] point = queue.poll();
+            int[] point = queue.poll();
             int r = point[0];
             int c = point[1];
             Cell cell = cells[r][c];
             if (cell.getNearbyMines() == 0) {
-                if (r > 1 && Objects.nonNull(cells[r - 1][c])) { // ↑
-                    queue.add(new Integer[]{r - 1, c});
+                if (r > 1 && Objects.nonNull(cells[r - 1][c]) && !cells[r - 1][c].isOpened()) { // ↑
+                    queue.add(new int[]{r - 1, c});
                 }
-                if (r < cells.length - 1 && Objects.nonNull(cells[r + 1][c])) { // ↓
-                    queue.add(new Integer[]{r + 1, c});
+                if (r < cells.length - 1 && Objects.nonNull(cells[r + 1][c]) && !cells[r + 1][c].isOpened()) { // ↓
+                    queue.add(new int[]{r + 1, c});
                 }
-                if (c > 1 && Objects.nonNull(cells[r][c - 1])) { // ←
-                    queue.add(new Integer[]{r, c - 1});
+                if (c > 1 && Objects.nonNull(cells[r][c - 1]) && !cells[r][c - 1].isOpened()) { // ←
+                    queue.add(new int[]{r, c - 1});
                 }
-                if (c < cells[r].length - 1 && Objects.nonNull(cells[r][c + 1])) { // →
-                    queue.add(new Integer[]{r, c + 1});
+                if (c < cells[r].length - 1 && Objects.nonNull(cells[r][c + 1]) && !cells[r][c + 1].isOpened()) { // →
+                    queue.add(new int[]{r, c + 1});
                 }
-                if (r > 1 && c > 1 && Objects.nonNull(cells[r - 1][c - 1])) { // ↖
-                    queue.add(new Integer[]{r - 1, c - 1});
+                if (r > 1 && c > 1 && Objects.nonNull(cells[r - 1][c - 1]) && !cells[r - 1][c - 1].isOpened()) { // ↖
+                    queue.add(new int[]{r - 1, c - 1});
                 }
-                if (r < cells.length - 1 && c > 1 && Objects.nonNull(cells[r + 1][c - 1])) { // ↙
-                    queue.add(new Integer[]{r + 1, c - 1});
+                if (r < cells.length - 1 && c > 1 && Objects.nonNull(cells[r + 1][c - 1]) && !cells[r + 1][c - 1].isOpened()) { // ↙
+                    queue.add(new int[]{r + 1, c - 1});
                 }
-                if (r > 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r - 1][c + 1])) { // ↗
-                    queue.add(new Integer[]{r - 1, c + 1});
+                if (r > 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r - 1][c + 1]) && !cells[r - 1][c + 1].isOpened()) { // ↗
+                    queue.add(new int[]{r - 1, c + 1});
                 }
-                if (r < cells.length - 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r + 1][c + 1])) { // ↘
-                    queue.add(new Integer[]{r + 1, c + 1});
+                if (r < cells.length - 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r + 1][c + 1]) && !cells[r + 1][c + 1].isOpened()) { // ↘
+                    queue.add(new int[]{r + 1, c + 1});
                 }
             }
             cell.open();
