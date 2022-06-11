@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -16,8 +17,14 @@ public class ScoreBoardPanel extends JPanel {
     public ScoreBoardPanel(JComponent left, JComponent center, JComponent right) {
         setLayout(new BorderLayout());
 
-        add(left, BorderLayout.WEST);
-        add(center, BorderLayout.CENTER);
-        add(right, BorderLayout.EAST);
+        if (Objects.nonNull(left)) {
+            add(left, BorderLayout.WEST);
+        }
+        if (Objects.nonNull(center)) {
+            add(center, BorderLayout.CENTER);
+        }
+        if (Objects.nonNull(right)) {
+            add(right, BorderLayout.EAST);
+        }
     }
 }

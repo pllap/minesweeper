@@ -10,9 +10,9 @@ import java.awt.*;
 public class GameBoardPanel extends JPanel {
     private final Board board;
 
-    public GameBoardPanel(Board board, int width, int height) {
+    public GameBoardPanel(Board board) {
         this.board = board;
 
-        setLayout(new GridLayout(width, height));
+        setLayout(new GridLayout(board.getWidth(), board.getHeight()));
     }
 }
