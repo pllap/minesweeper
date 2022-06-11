@@ -121,9 +121,15 @@ public class Board {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Cell[] row : cells) {
-            for (Cell cell : row) {
+        StringBuilder stringBuilder = new StringBuilder(" \t");
+        for (int col = 0; col < width; col++) {
+            stringBuilder.append(String.format("%-3d", col));
+        }
+        stringBuilder.append('\n');
+        for (int row = 0; row < height; row++) {
+            stringBuilder.append(String.format("%-3d", row));
+            for (int col = 0; col < width; col++) {
+                Cell cell = cells[row][col];
                 if (Objects.nonNull(cell)) {
                     stringBuilder.append(cell);
                 }
