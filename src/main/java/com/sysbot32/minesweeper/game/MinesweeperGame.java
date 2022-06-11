@@ -16,10 +16,10 @@ public class MinesweeperGame {
         board = new Board(width, height, mines);
     }
 
-    public void open(int row, int col) {
+    public void open(int row, int col) throws FailureException {
         board.open(row, col);
         if (board.getCells()[row][col].isHasMine()) {
-            System.out.println(getCurrentTime());
+            throw new FailureException(String.valueOf(getCurrentTime()));
         }
     }
 
