@@ -70,10 +70,12 @@ public class CommandPrompt {
                 try {
                     minesweeperGame.open(row, col);
                 } catch (FailureException e) {
-                    System.out.println("실패");
+                    System.err.println(minesweeperGame.toString());
+                    System.err.println("실패");
                     return;
                 }
                 if (minesweeperGame.checkSuccess()) {
+                    System.out.println(minesweeperGame.toString());
                     System.out.println("성공");
                     return;
                 }
