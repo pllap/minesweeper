@@ -44,22 +44,22 @@ public class Board {
 
     private int getNearbyMines(int row, int col) {
         int nearbyMines = 0;
-        if (row > 1 && Objects.nonNull(cells[row - 1][col]) && cells[row - 1][col].isHasMine()) { // ↑
+        if (row > 0 && Objects.nonNull(cells[row - 1][col]) && cells[row - 1][col].isHasMine()) { // ↑
             nearbyMines++;
         }
         if (row < cells.length - 1 && Objects.nonNull(cells[row + 1][col]) && cells[row + 1][col].isHasMine()) { // ↓
             nearbyMines++;
         }
-        if (col > 1 && Objects.nonNull(cells[row][col - 1]) && cells[row][col - 1].isHasMine()) { // ←
+        if (col > 0 && Objects.nonNull(cells[row][col - 1]) && cells[row][col - 1].isHasMine()) { // ←
             nearbyMines++;
         }
         if (col < cells[row].length - 1 && Objects.nonNull(cells[row][col + 1]) && cells[row][col + 1].isHasMine()) { // →
             nearbyMines++;
         }
-        if (row > 1 && col > 1 && Objects.nonNull(cells[row - 1][col - 1]) && cells[row - 1][col - 1].isHasMine()) { // ↖
+        if (row > 0 && col > 0 && Objects.nonNull(cells[row - 1][col - 1]) && cells[row - 1][col - 1].isHasMine()) { // ↖
             nearbyMines++;
         }
-        if (row < cells.length - 1 && col > 1 && Objects.nonNull(cells[row + 1][col - 1]) && cells[row + 1][col - 1].isHasMine()) { // ↙
+        if (row < cells.length - 1 && col > 0 && Objects.nonNull(cells[row + 1][col - 1]) && cells[row + 1][col - 1].isHasMine()) { // ↙
             nearbyMines++;
         }
         if (row > 1 && col < cells[row].length - 1 && Objects.nonNull(cells[row - 1][col + 1]) && cells[row - 1][col + 1].isHasMine()) { // ↗
@@ -86,28 +86,28 @@ public class Board {
             int c = point[1];
             Cell cell = cells[r][c];
             if (cell.getNearbyMines() == 0) {
-                if (r > 1 && Objects.nonNull(cells[r - 1][c]) && !cells[r - 1][c].isOpened()) { // ↑
+                if (r > 0 && Objects.nonNull(cells[r - 1][c]) && !cells[r - 1][c].isOpened() && !cells[r - 1][c].isHasMine()) { // ↑
                     queue.add(new int[]{r - 1, c});
                 }
-                if (r < cells.length - 1 && Objects.nonNull(cells[r + 1][c]) && !cells[r + 1][c].isOpened()) { // ↓
+                if (r < cells.length - 1 && Objects.nonNull(cells[r + 1][c]) && !cells[r + 1][c].isOpened() && !cells[r + 1][c].isHasMine()) { // ↓
                     queue.add(new int[]{r + 1, c});
                 }
-                if (c > 1 && Objects.nonNull(cells[r][c - 1]) && !cells[r][c - 1].isOpened()) { // ←
+                if (c > 0 && Objects.nonNull(cells[r][c - 1]) && !cells[r][c - 1].isOpened() && !cells[r][c - 1].isHasMine()) { // ←
                     queue.add(new int[]{r, c - 1});
                 }
-                if (c < cells[r].length - 1 && Objects.nonNull(cells[r][c + 1]) && !cells[r][c + 1].isOpened()) { // →
+                if (c < cells[r].length - 1 && Objects.nonNull(cells[r][c + 1]) && !cells[r][c + 1].isOpened() && !cells[r][c + 1].isHasMine()) { // →
                     queue.add(new int[]{r, c + 1});
                 }
-                if (r > 1 && c > 1 && Objects.nonNull(cells[r - 1][c - 1]) && !cells[r - 1][c - 1].isOpened()) { // ↖
+                if (r > 0 && c > 0 && Objects.nonNull(cells[r - 1][c - 1]) && !cells[r - 1][c - 1].isOpened()) { // ↖
                     queue.add(new int[]{r - 1, c - 1});
                 }
-                if (r < cells.length - 1 && c > 1 && Objects.nonNull(cells[r + 1][c - 1]) && !cells[r + 1][c - 1].isOpened()) { // ↙
+                if (r < cells.length - 1 && c > 0 && Objects.nonNull(cells[r + 1][c - 1]) && !cells[r + 1][c - 1].isOpened() && !cells[r - 1][c - 1].isHasMine()) { // ↙
                     queue.add(new int[]{r + 1, c - 1});
                 }
-                if (r > 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r - 1][c + 1]) && !cells[r - 1][c + 1].isOpened()) { // ↗
+                if (r > 0 && c < cells[r].length - 1 && Objects.nonNull(cells[r - 1][c + 1]) && !cells[r - 1][c + 1].isOpened() && !cells[r - 1][c + 1].isHasMine()) { // ↗
                     queue.add(new int[]{r - 1, c + 1});
                 }
-                if (r < cells.length - 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r + 1][c + 1]) && !cells[r + 1][c + 1].isOpened()) { // ↘
+                if (r < cells.length - 1 && c < cells[r].length - 1 && Objects.nonNull(cells[r + 1][c + 1]) && !cells[r + 1][c + 1].isOpened() && !cells[r + 1][c + 1].isHasMine()) { // ↘
                     queue.add(new int[]{r + 1, c + 1});
                 }
             }
