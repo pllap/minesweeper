@@ -85,7 +85,7 @@ public class Board {
             int r = point[0];
             int c = point[1];
             Cell cell = cells[r][c];
-            if (cell.getNearbyMines() == 0) {
+            if (cell.getNearbyMines() == 0 && !cell.isHasMine()) {
                 if (r > 0 && Objects.nonNull(cells[r - 1][c]) && !cells[r - 1][c].isOpened() && !cells[r - 1][c].isHasMine()) { // ↑
                     queue.add(new int[]{r - 1, c});
                 }
