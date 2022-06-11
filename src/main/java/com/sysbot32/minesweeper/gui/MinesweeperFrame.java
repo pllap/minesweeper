@@ -17,7 +17,7 @@ public class MinesweeperFrame extends JFrame {
 
         minesweeperGame = new MinesweeperGame(Preset.EASY);
 
-        scoreBoardPanel = new ScoreBoardPanel(null, null, null);
+        scoreBoardPanel = new ScoreBoardPanel(null, new FaceButton(0), null);
         gameBoardPanel = new GameBoardPanel(minesweeperGame.getBoard());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
