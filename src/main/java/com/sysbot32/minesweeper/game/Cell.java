@@ -54,19 +54,19 @@ public class Cell {
     public String toString() {
         if (isOpened) {
             if (hasMine) {
-                return "[*]";
+                return "\033[0;35m[*]\u001B[0m";
             } else if (nearbyMines > 0) {
-                return "[" + nearbyMines + "]";
+                return "[\u001B[36m" + nearbyMines + "\u001B[0m]";
             } else {
                 return "[ ]";
             }
         } else {
             if (isFlagged) {
-                return "[>]";
+                return "\u001B[33m[>]\u001B[0m";
             } else if (hasQuestionMark) {
-                return "[?]";
+                return "\u001B[32m[?]\u001B[0m";
             } else {
-                return "[+]";
+                return "\u001B[34m[+]\u001B[0m";
             }
         }
     }
