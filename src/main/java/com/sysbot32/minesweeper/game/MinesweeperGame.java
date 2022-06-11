@@ -25,9 +25,10 @@ public class MinesweeperGame {
 
     public void flag(int row, int col) {
         board.flag(row, col);
-        if (board.getCells()[row][col].isFlagged()) {
+        Cell cell = board.getCells()[row][col];
+        if (cell.isFlagged()) {
             mines++;
-        } else {
+        } else if (cell.isHasQuestionMark()) {
             mines--;
         }
     }
