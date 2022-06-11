@@ -30,7 +30,9 @@ public class Cell {
     }
 
     public void open() {
-        isOpened = true;
+        if (!isFlagged && !hasQuestionMark) {
+            isOpened = true;
+        }
     }
 
     public void flag() {
