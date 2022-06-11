@@ -54,7 +54,7 @@ public class Cell {
     public String toString() {
         if (isOpened) {
             if (hasMine) {
-                return "[💣]";
+                return "[*]";
             } else if (nearbyMines > 0) {
                 return "[" + nearbyMines + "]";
             } else {
@@ -62,11 +62,11 @@ public class Cell {
             }
         } else {
             if (isFlagged) {
-                return "[🚩]";
+                return "[>]";
             } else if (hasQuestionMark) {
-                return "[❓]";
+                return "[?]";
             } else {
-                return "[⬛]";
+                return "[+]";
             }
         }
     }
