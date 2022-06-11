@@ -35,4 +35,27 @@ public class MinesweeperGame {
     public long getCurrentTime() {
         return System.currentTimeMillis() - startTime;
     }
+
+    public boolean checkSuccess() {
+        if (mines != board.getMines()) {
+            return false;
+        }
+        for (Cell[] row : board.getCells()) {
+            for (Cell cell : row) {
+                if (cell.isOpened() && cell.isHasMine()) {
+                    return false;
+                }
+                if (!cell.isOpened() && !(cell.isFlagged() && cell.isHasMine())) {
+                    return false;
+                }
+            }
+        }
+        System.out.println(getCurrentTime());
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Time: " + getCurrentTime() + "\nMines: " + (board.getMines() - mines) + "\n" + board;
+    }
 }
