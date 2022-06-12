@@ -49,6 +49,10 @@ public class CommandPrompt {
         int width = scanner.nextInt();
         int height = scanner.nextInt();
         int mines = scanner.nextInt();
+        if (mines > width * height) {
+            System.out.println("지뢰의 수가 너무 많습니다. 다시 입력해 주세요.");
+            return startCustomMenu();
+        }
         return new int[]{width, height, mines};
     }
 
